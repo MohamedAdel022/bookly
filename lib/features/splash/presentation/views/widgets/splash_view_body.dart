@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:bookly/core/utils/assets.dart';
 
 class SplasViewhBody extends StatelessWidget {
   const SplasViewhBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          CircularProgressIndicator(),
-          SizedBox(height: 20),
-          Text('Loading...'),
-        ]);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Image.asset(AssetData.logo),
+      ],
+    );
   }
 }
