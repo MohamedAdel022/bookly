@@ -1,4 +1,4 @@
-import 'package:bookly/features/splash/presentation/views/home/presentation/views/home_view.dart';
+import 'package:bookly/features/home/presentation/views/home_view.dart';
 import 'package:bookly/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:bookly/core/utils/assets.dart';
@@ -23,7 +23,6 @@ class _SplasViewhBodyState extends State<SplasViewhBody>
 
     navigateHome();
   }
-
 
   @override
   void dispose() {
@@ -63,10 +62,11 @@ class _SplasViewhBodyState extends State<SplasViewhBody>
     animationController.forward();
   }
 }
-  void navigateHome() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const HomeView(),
-          transition: Transition.fade,
-          duration: const Duration(milliseconds: 500));
-    });
-  }
+
+void navigateHome() {
+  Future.delayed(const Duration(seconds: 3), () {
+    Get.to(() => const HomeView(),
+        transition: Transition.fade,
+        duration: const Duration(milliseconds: 500));
+  });
+}
