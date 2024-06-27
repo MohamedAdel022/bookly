@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookCard extends StatelessWidget {
@@ -12,7 +13,7 @@ class CustomBookCard extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(16)),
           color: Colors.red,
           image: DecorationImage(
-            image: AssetImage('assets/images/test_image.png'),
+            image: AssetImage(AssetData.testImage),
             fit: BoxFit.cover,
           ),
         ),
