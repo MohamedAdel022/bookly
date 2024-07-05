@@ -70,7 +70,7 @@ void navigateHome(BuildContext context) {
       // Get.to(() => const HomeView(),
       //     transition: Transition.fade,
       //     duration: const Duration(milliseconds: 500));
-      GoRouter.of(context).push(AppRouter.kHome);
+      GoRouter.of(context).go(AppRouter.kHome);
     },
   );
 }

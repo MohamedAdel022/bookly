@@ -1,3 +1,4 @@
+import 'package:bookly/features/search/presentation/views/widgets/search_result_list_view.dart';
 import 'package:flutter/material.dart';
 import 'custom_search_textfield.dart';
 
@@ -12,6 +13,10 @@ class SearchViewBody extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 30),
           child: CustomSearchTextField(),
+        ),
+        SizedBox(height: 30),
+        Expanded(
+          child: SearchResultListView(),
         ),
       ],
     );
