@@ -1,12 +1,13 @@
 import 'package:bookly/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly/features/home/presentation/views/home_view.dart';
 import 'package:bookly/features/splash/presentation/views/splash_view.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static const kHome = '/home';
-  static const kBookDetails = '/book-details';
+  static const kBookDetails = '/bookDetails';
+  static const kSearch = '/search';
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -14,38 +15,16 @@ abstract class AppRouter {
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
-        path: '/home',
+        path: kHome,
         builder: (context, state) => const HomeView(),
-        pageBuilder: (context, state) {
-          return CustomTransitionPage(
-            key: state.pageKey,
-            child: const HomeView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
-            },
-          );
-        },
       ),
       GoRoute(
-        path: '/book-details',
+        path: kBookDetails,
         builder: (context, state) => const BookDetailsView(),
-        pageBuilder: (context, state) {
-          return CustomTransitionPage(
-            key: state.pageKey,
-            child: const BookDetailsView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
-            },
-          );
-        },
+      ),
+      GoRoute(
+        path: kSearch,
+        builder: (context, state) => const BookDetailsView(),
       ),
     ],
   );
