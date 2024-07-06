@@ -9,13 +9,7 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> get(String path) async {
-    try {
-      Response response = await _dio.get(path);
-      return response.data;
-    } on DioException catch (e) {
-      throw Exception(e.message);
-    } catch (e) {
-      throw Exception(e.toString());
-    }
+    Response response = await _dio.get(path);
+    return response.data;
   }
 }
