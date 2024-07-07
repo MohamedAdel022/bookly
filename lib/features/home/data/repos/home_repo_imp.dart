@@ -22,7 +22,7 @@ class HomeRepoImp implements HomeRepo {
         log("this the first iteration");
         books.add(BookModel.fromJson(item));
       }
-      log(books[0].id.toString());
+      log(books[0].volumeInfo.imageLinks.thumbnail);
       return Right(books);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
