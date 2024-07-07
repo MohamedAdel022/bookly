@@ -1,4 +1,4 @@
-import 'package:bookly/core/utils/widgets/custom_button.dart';
+import 'package:bookly/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class BooksActions extends StatelessWidget {
