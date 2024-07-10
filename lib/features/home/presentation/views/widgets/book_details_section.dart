@@ -31,7 +31,7 @@ class BookDetailsSection extends StatelessWidget {
               Styles.textStyle18.copyWith(color: Colors.white.withOpacity(.7)),
         ),
         const SizedBox(height: 18),
-        const BookRating(),
+        const BookRating( rating: 4, totalRating: 1000),
         const SizedBox(height: 37),
         const BooksActions(),
       ],

@@ -15,6 +15,8 @@ class VolumeInfo extends Equatable {
   final ReadingModes? readingModes;
   final int? pageCount;
   final String? printType;
+  final int? averageRating;
+  final int? ratingsCount;
   final List<String>? categories;
   final String? maturityRating;
   final bool? allowAnonLogging;
@@ -27,6 +29,8 @@ class VolumeInfo extends Equatable {
   final String? canonicalVolumeLink;
 
   const VolumeInfo({
+    this.averageRating,
+    this.ratingsCount,
     this.title,
     this.authors,
     this.publisher,
@@ -69,6 +73,8 @@ class VolumeInfo extends Equatable {
             ?.map((e) => e as String)
             .toList(),
         maturityRating: json['maturityRating'] as String?,
+        averageRating: json['averageRating'] as int?,
+        ratingsCount: json['ratingsCount'] as int?,
         allowAnonLogging: json['allowAnonLogging'] as bool?,
         contentVersion: json['contentVersion'] as String?,
         panelizationSummary: json['panelizationSummary'] == null
@@ -96,10 +102,12 @@ class VolumeInfo extends Equatable {
         'printType': printType,
         'categories': categories,
         'maturityRating': maturityRating,
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toJson(),
-        'imageLinks': imageLinks?.toJson(),
+        'imageLinks': imageLinks.toJson(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
@@ -120,6 +128,8 @@ class VolumeInfo extends Equatable {
       printType,
       categories,
       maturityRating,
+      averageRating,
+      ratingsCount,
       allowAnonLogging,
       contentVersion,
       panelizationSummary,

@@ -15,9 +15,7 @@ import 'constants.dart';
 void main() {
   Bloc.observer = SimpleBlocObserver();
   setupServiceLocator();
-  HomeRepoImp homeRepoImp = HomeRepoImp(apiService: ApiService(Dio()));
-  homeRepoImp.fetchNewestBooks();
-  runApp(const BooklyApp());
+    runApp(const BooklyApp());
 }
 
 class BooklyApp extends StatelessWidget {
@@ -39,7 +37,7 @@ class BooklyApp extends StatelessWidget {
                 Dio(),
               ),
             ),
-          ),
+          )..fetchNewestBooks(),
         ),
       ],
       child: MaterialApp.router(
