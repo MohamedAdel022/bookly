@@ -9,15 +9,18 @@ import 'package:go_router/go_router.dart';
 import 'book_rating.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key, required this.bookmodel});
+  const BookListViewItem({super.key, required this.bookModel});
 
-  final BookModel bookmodel;
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetails);
+        GoRouter.of(context).push(
+          AppRouter.kBookDetails,
+          extra: bookModel,
+        );
       },
       borderRadius:
           BorderRadius.circular(16), // Add border radius to the InkWell
@@ -31,7 +34,7 @@ class BookListViewItem extends StatelessWidget {
           child: Row(
             children: [
               CustomBookImage(
-                imageUrl: bookmodel.volumeInfo.imageLinks?.thumbnail ?? '',
+                imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
               ),
               const SizedBox(width: 30),
               Expanded(
@@ -41,7 +44,7 @@ class BookListViewItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: Text(
-                        bookmodel.volumeInfo.title!,
+                        bookModel.volumeInfo.title!,
                         style: Styles.textStyle20
                             .copyWith(fontFamily: kGtSectraFine),
                         maxLines: 2,
@@ -50,7 +53,7 @@ class BookListViewItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      bookmodel.volumeInfo.authors!.join(' '),
+                      bookModel.volumeInfo.authors!.join(' '),
                       style: Styles.textStyle14.copyWith(
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -66,8 +69,9 @@ class BookListViewItem extends StatelessWidget {
                           ),
                         ),
                         BookRating(
-                          rating: bookmodel.volumeInfo.averageRating ?? 0,
-                          totalRating: bookmodel.volumeInfo.ratingsCount ?? 0,
+                          rating:
+                              bookModel.volumeInfo.averageRating?.round() ?? 0,
+                          totalRating: bookModel.volumeInfo.ratingsCount ?? 0,
                         ),
                       ],
                     )
