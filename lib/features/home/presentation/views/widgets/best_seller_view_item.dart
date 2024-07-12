@@ -15,11 +15,18 @@ class BookListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         GoRouter.of(context).push(AppRouter.kBookDetails);
       },
-      child: SizedBox(
+      borderRadius:
+          BorderRadius.circular(16), // Add border radius to the InkWell
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.circular(16), // Add border radius to the Ink
+        ),
+        child: SizedBox(
           height: 125,
           child: Row(
             children: [
@@ -33,11 +40,13 @@ class BookListViewItem extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
-                      child: Text(bookmodel.volumeInfo.title!,
-                          style: Styles.textStyle20
-                              .copyWith(fontFamily: kGtSectraFine),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis),
+                      child: Text(
+                        bookmodel.volumeInfo.title!,
+                        style: Styles.textStyle20
+                            .copyWith(fontFamily: kGtSectraFine),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     const SizedBox(height: 3),
                     Text(
@@ -50,21 +59,25 @@ class BookListViewItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Free',
-                            style: Styles.textStyle20.copyWith(
-                              fontWeight: FontWeight.bold,
-                            )),
+                        Text(
+                          'Free',
+                          style: Styles.textStyle20.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         BookRating(
-                            rating: bookmodel.volumeInfo.averageRating ?? 0,
-                            totalRating:
-                                bookmodel.volumeInfo.ratingsCount ?? 0),
+                          rating: bookmodel.volumeInfo.averageRating ?? 0,
+                          totalRating: bookmodel.volumeInfo.ratingsCount ?? 0,
+                        ),
                       ],
                     )
                   ],
                 ),
-              )
+              ),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

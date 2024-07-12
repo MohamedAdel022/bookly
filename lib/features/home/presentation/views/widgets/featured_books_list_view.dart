@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
-
+ 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
@@ -34,7 +34,7 @@ class FeaturedBooksListView extends StatelessWidget {
           return CustomErrorWidget(errorMesssage: state.message);
         } else {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.3,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: List.generate(

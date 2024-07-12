@@ -22,7 +22,7 @@ class HomeRepoImp implements HomeRepo {
         log("this the first iteration");
         books.add(BookModel.fromJson(item));
       }
-      log(books[0].volumeInfo.imageLinks?.thumbnail??'');
+      log(books[0].volumeInfo.imageLinks?.thumbnail ?? '');
       return Right(books);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
@@ -45,6 +45,29 @@ class HomeRepoImp implements HomeRepo {
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     } catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilerBooks(
+      {required String category}) async {
+    try {
+      log("hello");
+      var data = await apiService.get(
+          'volumes?Filtering=free-ebooks&q=subject:$category&Sorting=relevance');
+      log("hello2");
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        log("this the first iteration");
+        books.add(BookModel.fromJson(item));
+      }
+      log(books[0].volumeInfo.imageLinks?.thumbnail ?? '');
+      return Right(books);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('error: $e');
       return Left(ServerFailure(message: e.toString()));
     }
   }
