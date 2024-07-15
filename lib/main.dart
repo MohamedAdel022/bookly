@@ -1,4 +1,3 @@
-import 'package:bookly/core/utils/api.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/service_locator.dart';
 import 'package:bookly/core/utils/simple_bloc_observer.dart';

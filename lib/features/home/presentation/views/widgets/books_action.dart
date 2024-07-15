@@ -1,8 +1,11 @@
 import 'package:bookly/core/widgets/custom_button.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BooksActions extends StatelessWidget {
-  const BooksActions({super.key});
+  const BooksActions({super.key, required this.bookModel});
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +34,18 @@ class BooksActions extends StatelessWidget {
               topRight: Radius.circular(12),
               bottomRight: Radius.circular(12),
             ),
-            onPressed: () {},
+            onPressed: () {
+              _launchUrl(Uri.parse(bookModel.volumeInfo.previewLink ?? ''));
+            },
           )),
         ],
       ),
     );
+  }
+
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

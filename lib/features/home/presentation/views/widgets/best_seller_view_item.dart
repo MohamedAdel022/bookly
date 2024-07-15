@@ -1,11 +1,10 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import 'book_rating.dart';
 
 class BookListViewItem extends StatelessWidget {
@@ -53,7 +52,9 @@ class BookListViewItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      bookModel.volumeInfo.authors!.join(' '),
+                      bookModel.volumeInfo.authors == null
+                          ? 'Unknown'
+                          : bookModel.volumeInfo.authors!.join(','),
                       style: Styles.textStyle14.copyWith(
                         overflow: TextOverflow.ellipsis,
                       ),

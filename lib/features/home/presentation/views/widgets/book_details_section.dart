@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'books_action.dart';
@@ -37,7 +37,7 @@ class BookDetailsSection extends StatelessWidget {
             rating: bookModel.volumeInfo.averageRating ?? 0,
             totalRating: bookModel.volumeInfo.ratingsCount ?? 0),
         const SizedBox(height: 37),
-        const BooksActions(),
+        BooksActions(bookModel: bookModel),
       ],
     );
   }
